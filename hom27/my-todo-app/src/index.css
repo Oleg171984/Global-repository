@@ -1,0 +1,57 @@
+/* Базові стилі для світлої теми */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+}
+
+header {
+  background-color: #333;
+  padding: 10px;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header button {
+  margin-left: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Стилі для темної теми */
+.dark body {
+  background-color: #121212;
+  color: white;
+}
+
+.dark header {
+  background-color: #444;
+}
+
+.dark header nav ul li a {
+  color: lightgray;
+}
+
+.dark header button {
+  background-color: #333;
+  color: white;
+}
+
+.dark main {
+  background-color: #1e1e1e;
+}

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560da8ea-c5e9-4a91-912b-eb241911d612" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/HW24.1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW24.1/.idea/HW24.1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW24.1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW24.1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW24.1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW24.1/swapi-interface" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW25.1/emoji-vote-app" beforeDir="false" afterPath="$PROJECT_DIR$/HW25.1/emoji-vote-app" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW25.1/emoji-vote-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/HW25.1/emoji-vote-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hom24/swapi-interface" beforeDir="false" afterPath="$PROJECT_DIR$/hom24/swapi-interface" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hom24/swapi-interface/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/hom24/swapi-interface/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hom24/swapi-interface/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/hom24/swapi-interface/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hom24/swapi-interface/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hom24/swapi-interface/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hom24/swapi-interface/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/hom24/swapi-interface/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hom25/emoji-vote-app" beforeDir="false" afterPath="$PROJECT_DIR$/hom25/emoji-vote-app" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hom25/emoji-vote-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/hom25/emoji-vote-app/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +68,7 @@
       <workItem from="1739798127439" duration="21000" />
       <workItem from="1739798193054" duration="862000" />
       <workItem from="1739800626904" duration="469000" />
-      <workItem from="1739825550337" duration="315000" />
+      <workItem from="1739825550337" duration="1003000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,6 @@
+{
+  "todos": [
+    { "id": 1, "title": "Вивчити Redux-Saga", "completed": false },
+    { "id": 2, "title": "Додати json-server", "completed": false }
+  ]
+}

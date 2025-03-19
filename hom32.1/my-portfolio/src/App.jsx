@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import AboutMe from './AboutMe';
-import TodoList from './ TodoList.jsx';
-import SwapiList from './ SwapiList';
-import Footer from "./Footer.jsx";
-import Navbar from "./Navbar"; // імпорт компонента Navbar
+import AboutMe from './Component/AboutMe.jsx';
+import TodoList from './Component/ TodoList.jsx';
+import SwapiList from './Component/ SwapiList.jsx';
+import Footer from "./Component/Footer.jsx";
+import Navbar from "./Component/Navbar.jsx"; // імпорт компонента Navbar
 
 
 const App = () => {

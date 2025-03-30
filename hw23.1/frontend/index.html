@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO Додаток</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>TODO Список</h1>
+    
+    <form id="todo-form">
+      <input type="text" id="title" placeholder="Назва задачі" required>
+      <textarea id="description" placeholder="Опис задачі"></textarea>
+      <button type="submit">Додати задачу</button>
+    </form>
+
+    <div class="todo-list" id="todo-list">
+      <!-- Задачі будуть додані через JavaScript -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

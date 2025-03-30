@@ -1,0 +1,51 @@
+{
+  "destination": [
+    { "id": 1, "name": "New York" },
+    { "id": 2, "name": "Los Angeles" },
+    { "id": 3, "name": "Chicago" }
+  ],
+  "hotels": [
+    {
+      "id": "2eaae3af5eef20b370f5ca9f",
+      "name": "Schmitt Inc",
+      "city": "Donatostead",
+      "phone_number": "1-551-225-4772 x370",
+      "photo": "https://picsum.photos/seed/Y7Ynoi/140/140"
+    },
+    {
+      "id": "f561abfe91b0e35ec1aba68d",
+      "name": "Klein LLC",
+      "city": "Palm Springs",
+      "phone_number": "861-849-0948",
+      "photo": "https://picsum.photos/seed/eO64Y9/140/140"
+    },
+    {
+      "id": "8d8fd2df2d0dd5de91d3d763",
+      "name": "Frami, Sanford and Bauch",
+      "city": "East Boyd",
+      "phone_number": "1-961-562-4067 x774",
+      "photo": "https://picsum.photos/seed/h6i1AzDi/140/140"
+    },
+    {
+      "id": "caf96d4ca2130bc73a3afaf4",
+      "name": "Stanton, Konopelski and Franey",
+      "city": "West Allis",
+      "phone_number": "(832) 721-2037 x0565",
+      "photo": "https://picsum.photos/seed/9hmoa1/140/140"
+    },
+    {
+      "id": "a0bac56e900bac36b263bfe1",
+      "name": "Lindgren, Hilpert and Steuber",
+      "city": "Draper",
+      "phone_number": "(771) 985-5097 x29288",
+      "photo": "https://picsum.photos/seed/okthkX/140/140"
+    },
+    {
+      "id": "c69aede0fc22d2c93ceafe86",
+      "name": "Purdy - Hegmann",
+      "city": "Fort Jimmy",
+      "phone_number": "335-592-2704 x789",
+      "photo": "https://picsum.photos/seed/6T5UIi9/140/140"
+    }
+  ]
+}

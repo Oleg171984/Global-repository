@@ -1,45 +1,125 @@
 import { Footer, Header, PageLayout } from '@components';
-import { Box, Typography, TextField, Button, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
+import { Box, Typography, TextField, Button, Select, FormControl, InputLabel, MenuItem, Snackbar, Alert } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import useInput from '/src/hooks/useInput.js';  // Підключаємо хук
 
 export function Truskavets() {
-  const [checkInDate, setCheckInDate] = useState(dayjs());
-  const [checkOutDate, setCheckOutDate] = useState(dayjs().add(1, 'day'));
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    birthDate: null,
+    checkInDate: dayjs(),
+    checkOutDate: dayjs().add(1, 'day'),
+    adults: 1,
+    children: 0,
+    roomType: 'standard',
+    rooms: 1,
+  });
   const [showForm, setShowForm] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [roomType, setRoomType] = useState('standard');
-  const [rooms, setRooms] = useState(1); // Додано для кількості кімнат
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  const calculateAge = (birthDate) => {
+    if (!birthDate) return 0;
+    const today = dayjs();
+    const age = today.diff(birthDate, 'year');
+    return age;
+  };
 
   const handleBooking = () => {
-    if (!name || !email || !phone) {
-      alert('Будь ласка, заповніть всі поля перед бронюванням.');
+    if (!formData.name || !formData.email || !formData.phone) {
+      setSnackbarMessage('Будь ласка, заповніть всі поля перед бронюванням.');
+      setSnackbarOpen(true);
       return;
     }
 
-    alert(`Дякуємо, ${name}! Ви забронювали ${rooms} номер(и) типу ${roomType} з ${checkInDate.format('YYYY-MM-DD')} по ${checkOutDate.format('YYYY-MM-DD')}.\nКількість дорослих: ${adults}, Кількість дітей: ${children}.`);
+    if (formData.birthDate) {
+      const age = calculateAge(formData.birthDate);
+      if (age >= 14) {
+        setFormData((prevData) => ({
+          ...prevData,
+          adults: 1,
+          children: 0,
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          adults: 0,
+          children: 1,
+        }));
+      }
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        children: 0,
+      }));
+    }
+
+    setSnackbarMessage(`Дякуємо, ${formData.name}! Ви забронювали ${formData.rooms} номер(и) типу ${formData.roomType} з ${formData.checkInDate.format('YYYY-MM-DD')} по ${formData.checkOutDate.format('YYYY-MM-DD')}.\nКількість дорослих: ${formData.adults}, Кількість дітей: ${formData.children}.`);
+    setSnackbarOpen(true);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleDateChange = (newValue, field) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: newValue,
+    }));
   };
 
   const handleToggleForm = () => {
     if (showForm) {
-      setName('');
-      setEmail('');
-      setPhone('');
-      setCheckInDate(dayjs());
-      setCheckOutDate(dayjs().add(1, 'day'));
-      setRoomType('standard');
-      setRooms(1); // Скидаємо кількість кімнат при закритті форми
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        birthDate: null,
+        checkInDate: dayjs(),
+        checkOutDate: dayjs().add(1, 'day'),
+        adults: 1,
+        children: 0,
+        roomType: 'standard',
+        rooms: 1,
+      });
     }
     setShowForm(!showForm);
   };
+
+  const nameInputProps = useInput({
+    label: "Ім'я",
+    value: formData.name,
+    onChange: handleChange,
+    name: 'name',
+  });
+
+  const emailInputProps = useInput({
+    label: 'Email',
+    type: 'email',
+    value: formData.email,
+    onChange: handleChange,
+    name: 'email',
+  });
+
+  const phoneInputProps = useInput({
+    label: 'Телефон',
+    type: 'tel',
+    value: formData.phone,
+    onChange: handleChange,
+    name: 'phone',
+  });
 
   return (
     <PageLayout
@@ -68,11 +148,11 @@ export function Truskavets() {
           </Box>
           {showInfo && (
             <Typography paragraph color="blue"
-            sx={{
-              backgroundColor: 'white',
-              padding: 2,
-              borderRadius: 2,
-              }}>
+                        sx={{
+                          backgroundColor: 'white',
+                          padding: 2,
+                          borderRadius: 2,
+                        }}>
               Якщо ви шукаєте готель, в якому можна відпочити з королівським розмахом за відносно невеликі гроші, то «Золота корона» - саме те, що потрібно.
               З якою метою ви б не приїхали до Трускавця, у «Золотій короні» на вас чекатимуть 32 номери, оформлені в стилі ар-нуво. 8 номерів – дворівневі та належать до категорії «Люкс»: у них 2 санвузли, джакузі, гідробокс, інфрачервона сауна. 18 номерів «Стандарт» з двоспальними ліжками та 6 з роздільними односпальними ліжками не менш затишні та обставлені новими комфортними меблями.
               У вартість проживання в номерах входить сніданок, причому ви зможете обирати між кількома варіантами: американським, англійським, континентальним і т.д.
@@ -82,19 +162,37 @@ export function Truskavets() {
 
           {showForm && (
             <Box sx={{ backgroundColor: 'grey', borderRadius: 2, padding: 3, display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 400, marginTop: 2, color: 'black' }}>
-              <TextField label="Ім'я" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
-              <TextField label="Email" type="email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-              <TextField label="Телефон" type="tel" fullWidth value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <TextField {...nameInputProps} />
+              <TextField {...emailInputProps} />
+              <TextField {...phoneInputProps} />
+
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="Дата заїзду" value={checkInDate} onChange={(newValue) => setCheckInDate(newValue)} fullWidth />
-                <DatePicker label="Дата виїзду" value={checkOutDate} onChange={(newValue) => setCheckOutDate(newValue)} fullWidth />
+                <DatePicker
+                  label="Дата народження"
+                  value={formData.birthDate}
+                  onChange={(newValue) => handleDateChange(newValue, 'birthDate')}
+                  fullWidth
+                />
+                <DatePicker
+                  label="Дата заїзду"
+                  value={formData.checkInDate}
+                  onChange={(newValue) => handleDateChange(newValue, 'checkInDate')}
+                  fullWidth
+                />
+                <DatePicker
+                  label="Дата виїзду"
+                  value={formData.checkOutDate}
+                  onChange={(newValue) => handleDateChange(newValue, 'checkOutDate')}
+                  fullWidth
+                />
               </LocalizationProvider>
 
               <FormControl fullWidth>
                 <InputLabel>Кількість дорослих</InputLabel>
                 <Select
-                  value={adults}
-                  onChange={(e) => setAdults(e.target.value)}
+                  name="adults"
+                  value={formData.adults}
+                  onChange={handleChange}
                   label="Кількість дорослих"
                 >
                   {[...Array(10)].map((_, index) => (
@@ -108,8 +206,9 @@ export function Truskavets() {
               <FormControl fullWidth>
                 <InputLabel>Кількість дітей</InputLabel>
                 <Select
-                  value={children}
-                  onChange={(e) => setChildren(e.target.value)}
+                  name="children"
+                  value={formData.children}
+                  onChange={handleChange}
                   label="Кількість дітей"
                 >
                   {[...Array(5)].map((_, index) => (
@@ -120,12 +219,12 @@ export function Truskavets() {
                 </Select>
               </FormControl>
 
-              {/* Вибір кількості кімнат */}
               <FormControl fullWidth>
                 <InputLabel>Кількість кімнат</InputLabel>
                 <Select
-                  value={rooms}
-                  onChange={(e) => setRooms(e.target.value)}
+                  name="rooms"
+                  value={formData.rooms}
+                  onChange={handleChange}
                   label="Кількість кімнат"
                 >
                   {[...Array(5)].map((_, index) => (
@@ -139,8 +238,9 @@ export function Truskavets() {
               <FormControl fullWidth>
                 <InputLabel>Тип номера</InputLabel>
                 <Select
-                  value={roomType}
-                  onChange={(e) => setRoomType(e.target.value)}
+                  name="roomType"
+                  value={formData.roomType}
+                  onChange={handleChange}
                   label="Тип номера"
                 >
                   <MenuItem value="standard">Стандарт</MenuItem>
@@ -153,6 +253,12 @@ export function Truskavets() {
               </Button>
             </Box>
           )}
+
+          <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
+            <Alert onClose={() => setSnackbarOpen(false)} severity="info" sx={{ width: '100%' }}>
+              {snackbarMessage}
+            </Alert>
+          </Snackbar>
         </Box>
       )}
       renderFooter={() => <Footer />}

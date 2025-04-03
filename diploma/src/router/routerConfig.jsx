@@ -14,7 +14,7 @@ const routerConfig = [
         path: 'hotels',
         children: [
           { index: true, element: <Hotels /> },
-          { path: ':id', element: <p>Id</p> },
+          { path: ':id', element: <p>new-hotel-id</p> },
         ],
       },
     ],

@@ -11,16 +11,28 @@ import { useState } from 'react';
 export function Card({ hotel }) {
   const [loading, setLoading] = useState(true);
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (hotel.videoUrl) {
+      window.open(hotel.videoUrl, "_blank"); // Відкриває відео в новій вкладці
+    }
+  };
+
   return (
-    <MUICard sx={{ maxWidth: 345 }}>
+    <MUICard
+      sx={{ maxWidth: 345, textDecoration: "none" }}
+      component="div"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
       {loading && (
         <Box
           sx={{
-            position: 'relative',
-            height: '140px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            position: "relative",
+            height: "140px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <CircularProgress />
@@ -33,7 +45,7 @@ export function Card({ hotel }) {
         image={hotel.photo}
         onLoad={() => setLoading(false)}
         onError={() => setLoading(false)}
-        sx={{ display: loading ? 'none' : 'block' }}
+        sx={{ display: loading ? "none" : "block" }}
       />
       <CardContent>
         <Typography variant="h5" component="div">

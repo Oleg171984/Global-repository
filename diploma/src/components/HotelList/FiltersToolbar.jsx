@@ -14,7 +14,7 @@ export function TestToolbar(props){
     }
     return (
         <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+      <FormControl fullWidth sx={{marginBottom:4}}>
         <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
           labelId="demo-simple-select-label"

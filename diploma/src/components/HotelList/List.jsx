@@ -6,7 +6,6 @@ import { TestToolbar } from './FiltersToolbar.jsx';
 
 export function List() {
   const hotels = useSelector(selectHotels);
-  // console.log(hotels);
 
   return (
     <>

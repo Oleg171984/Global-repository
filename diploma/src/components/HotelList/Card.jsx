@@ -13,10 +13,12 @@ export function Card({ hotel }) {
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (hotel.videoUrl) {
-      window.open(hotel.videoUrl, "_blank"); // Відкриває відео в новій вкладці
+
+    if (hotel.city) {
+      const path = `/${hotel.city.toLowerCase()}`; // /truskavets
+      window.location.href = path;
     }
-  };
+  }
 
   return (
     <MUICard

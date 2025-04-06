@@ -2,7 +2,6 @@ import { Footer, Header, PageLayout } from '@components';
 import { Box, Typography } from '@mui/material';
 
 export function About() {
-  // console.log("About")
   return (
     <PageLayout
       renderHeader={() => <Header />}

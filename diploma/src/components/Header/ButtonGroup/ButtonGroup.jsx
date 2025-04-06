@@ -10,9 +10,7 @@ export function ButtonGroup() {
       <NavLink to="/about" variant="contained">
         About
       </NavLink>
-      <NavLink to="/truskavets" variant="contained">
-        Truskavets
-      </NavLink>
     </ButtonGroupMUI>
   );
 }
+
